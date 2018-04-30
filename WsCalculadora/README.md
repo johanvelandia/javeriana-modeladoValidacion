@@ -17,7 +17,10 @@ Los números en el path no tienen límite
 http://localhost:7593/api/v1/calculator/mult/3/3/8/-5/-2
 
 
-Para correr desde docker 
+Para correr desde docker: 
+
 docker pull jvelandia/modeladoarquitectura:v1
+
 docker run -p 7593:8080 jvelandia/modeladoarquitectura:v1
+
 docker run -p 7593:8080 -d --name tomcat8 tomcat8
