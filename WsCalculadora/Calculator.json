@@ -1,0 +1,233 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a sample server Calculator.  You can find out more about at [https://github.com/johanvelandia/javeriana-modeladoValidacion/tree/master/WsCalculadora](https://github.com/johanvelandia/javeriana-modeladoValidacion/tree/master/WsCalculadora). You can use the api key `special-key` to test the authorization filters.",
+    "version": "1.0.0",
+    "title": "Calculator",
+    "termsOfService": "https://github.com/johanvelandia/javeriana-modeladoValidacion/tree/master/WsCalculadora",
+    "contact": {
+      "email": "johanvelandia@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "felec.computec.com",
+  "basePath": "/api/v1/calculator",
+  "tags": [
+    {
+      "name": "add",
+      "description": "suma varios numeros que se reciven separados por /",
+      "externalDocs": {
+        "description": "Fuente en",
+        "url": "https://github.com/johanvelandia"
+      }
+    },
+    {
+      "name": "subs",
+      "description": "Realiza la resta de los parametros en la URL separados por /"
+    },
+    {
+      "name": "mult",
+      "description": "Multiplica los parametros en la URL separados por /"
+    },
+    {
+      "name": "div",
+      "description": "Divide los parametros en la URL separados por /"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/add/parametros": {
+      "get": {
+        "tags": [
+          "add"
+        ],
+        "summary": "Realiza la suma de varios numeros separados por /",
+        "description": "Realiza la suma de varios numeros separados por /",
+        "operationId": "add",
+        "produces": [
+          "application/html"
+        ],
+        "parameters": [
+          {
+            "name": "parametros",
+            "in": "query",
+            "description": "valores a sumar separados por /",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "string",
+              "items": {
+                "$ref": "#/definitions/Response"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/subs/parametros": {
+      "get": {
+        "tags": [
+          "subs"
+        ],
+        "summary": "Resta los valores de parametros y devuelve un html con la respuesta",
+        "description": "Resta los valores que vienen y retorna un html con la respuesta",
+        "operationId": "subs",
+        "produces": [
+          "application/html"
+        ],
+        "parameters": [
+          {
+            "name": "parametros",
+            "in": "query",
+            "description": "valores a restar separados por /",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/mult/parametros": {
+      "get": {
+        "tags": [
+          "mult"
+        ],
+        "summary": "Realiza la multiplicación de varios numeros separados por /",
+        "description": "Realiza la suma de varios numeros separados por /",
+        "operationId": "mult",
+        "produces": [
+          "application/html"
+        ],
+        "parameters": [
+          {
+            "name": "parametros",
+            "in": "query",
+            "description": "valores a multiplicar separados por /",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "string",
+              "items": {
+                "$ref": "#/definitions/Response"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/div/parametros": {
+      "get": {
+        "tags": [
+          "div"
+        ],
+        "summary": "Realiza la división de varios numeros separados por /",
+        "description": "Realiza la suma de varios numeros separados por /",
+        "operationId": "div",
+        "produces": [
+          "application/html"
+        ],
+        "parameters": [
+          {
+            "name": "parametros",
+            "in": "query",
+            "description": "valores a sumar separados por /",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "string",
+              "items": {
+                "$ref": "#/definitions/Response"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Response": {
+      "type": "string",
+      "format": "html"
+    }
+  },
+  "externalDocs": {
+    "description": "Fuente en:",
+    "url": "https://github.com/johanvelandia/javeriana-modeladoValidacion/tree/master/WsCalculadora"
+  }
+}
